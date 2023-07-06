@@ -9,22 +9,22 @@ namespace DevTrackR.ShippingOrders.API.Controllers
     [ApiController]
     public class ShippingOrdersController : ControllerBase
     {
-        private readonly IShippingOrderService _shippingOrderService;
+        private readonly IShippingOrderService _service;
 
         public ShippingOrdersController(IShippingOrderService shippingOrderService)
         {
-            _shippingOrderService = shippingOrderService;
+            _service = shippingOrderService;
         }
 
 
         [HttpGet("{trackingCode}")]
         public async Task<IActionResult> GetByTrackingCode(string trackingCode) =>
-            Ok(await _shippingOrderService.GetByTrackingCodeAsync(trackingCode));
+            Ok(await _service.GetByTrackingCodeAsync(trackingCode));
 
         [HttpPost]
-        public IActionResult Post([FromBody] AddShippingOrderInputModel inputModel)
+        public async Task<IActionResult> Post([FromBody] AddShippingOrderInputModel inputModel)
         {
-            var trackingCode = _shippingOrderService.Add(inputModel);
+            string trackingCode = await _service.AddAsync(inputModel);
             return CreatedAtAction(nameof(GetByTrackingCode), new { trackingCode }, inputModel);
         }
     }

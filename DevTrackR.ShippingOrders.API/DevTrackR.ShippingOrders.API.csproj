@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DevTrackR.ShippingOrders.Application\DevTrackR.ShippingOrders.Application.csproj" />
+    <ProjectReference Include="..\DevTrackR.ShippingOrders.Persistence\DevTrackR.ShippingOrders.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

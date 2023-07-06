@@ -5,7 +5,7 @@ namespace DevTrackR.ShippingOrders.Application.Services.Interfaces
 {
     public interface IShippingOrderService
     {
-        string Add(AddShippingOrderInputModel inputModel);
+        Task<string> AddAsync(AddShippingOrderInputModel inputModel);
         Task<ShippingOrderViewModel> GetByTrackingCodeAsync(string trackingCode);  
     }
 }

@@ -38,6 +38,8 @@ namespace DevTrackR.ShippingOrders.Persistence.Extensions
 
             services.AddSingleton<IMongoClient>(serviceProvider =>
             {
+                BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+
                 var configuration = serviceProvider.GetService<IConfiguration>();
                 var options = serviceProvider.GetService<MongoDbOptions>();
 
@@ -52,8 +54,6 @@ namespace DevTrackR.ShippingOrders.Persistence.Extensions
 
             services.AddTransient(serviceProvider =>
             {
-                BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
-
                 var options = serviceProvider.GetService<MongoDbOptions>();
                 var mongoClient = serviceProvider.GetService<IMongoClient>();
                 var database = mongoClient?.GetDatabase(options?.Database);
