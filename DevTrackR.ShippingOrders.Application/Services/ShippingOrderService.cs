@@ -8,12 +8,14 @@ namespace DevTrackR.ShippingOrders.Application.Services
 {
     public class ShippingOrderService : IShippingOrderService
     {
-        public void Add(AddShippingOrderInputModel inputModel)
+        public string Add(AddShippingOrderInputModel inputModel)
         {
             var shippingOrder = inputModel.ToEntity();
             var shippingServices = inputModel.Services.Select(serviceInputModel => serviceInputModel.ToEntity()).ToList();
             
             shippingOrder.AddServices(shippingServices);
+
+            return shippingOrder.TrackingCode;
         }
 
         public Task<ShippingOrderViewModel> GetByTrackingCodeAsync(string trackingCode)
