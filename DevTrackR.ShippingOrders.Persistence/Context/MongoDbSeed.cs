@@ -12,7 +12,7 @@ namespace DevTrackR.ShippingOrders.Persistence.Context
     {
         private readonly IMongoCollection<ShippingService> _collection;
 
-        private List<ShippingService> _shippingService = new()
+        private readonly List<ShippingService> _shippingService = new()
         {
             new("Envio estadual", 3.75m, 12m),
             new("Envio internacional", 5.25m, 15m),
