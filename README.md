@@ -28,7 +28,7 @@
 
 ### Telas do Projeto
 	* Swagger
-![](Images/swagger-endpoint.PNG?raw=true)
+![](Images/swagger-endpoints.png?raw=true)
 
 	* Solução
-![](Images/solution.PNG?raw=true)
+![](Images/solution.png?raw=true)
